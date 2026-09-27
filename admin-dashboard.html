@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="assets/admin.css">
   <link rel="stylesheet" href="assets/modal.css">
   <link rel="stylesheet" href="assets/skeleton.css">
+  <link rel="stylesheet" href="assets/polish.css">
+  <link rel="stylesheet" href="assets/admin-dashboard-tweaks.css">
 </head>
 <body>
 
@@ -42,6 +44,7 @@
       <p class="subtitle">Institution-wide student risk overview · Academic Year 2026–2027</p>
     </header>
 
+    <!-- ===================== METRIC CARDS ===================== -->
     <section class="metrics-grid">
       <div class="metric-card primary">
         <div class="metric-value" data-admin="students">0</div>
@@ -85,6 +88,7 @@
       </div>
     </section>
 
+    <!-- ===================== RISK DISTRIBUTION + CASE STATUS ===================== -->
     <div class="dashboard-grid">
       <section class="panel">
         <h3><i data-lucide="bar-chart-3"></i> Risk Distribution</h3>
@@ -116,7 +120,8 @@
           <div class="progress-label"><span>Monitoring</span><span data-case="monitoring">0</span></div>
           <div class="progress-label"><span>Resolved</span><span data-case="resolved">0</span></div>
         </div>
-        <h3 style="margin-top:1.5rem;"><i data-lucide="clipboard-list"></i> Interventions</h3>
+
+        <h3 style="margin-top:1.25rem;"><i data-lucide="clipboard-list"></i> Interventions</h3>
         <div class="progress-list">
           <div class="progress-label"><span>Pending</span><span data-iv="pending">0</span></div>
           <div class="progress-label"><span>Effective</span><span data-iv="effective">0</span></div>
@@ -124,12 +129,14 @@
       </section>
     </div>
 
+    <!-- ===================== PROGRAM BREAKDOWN ===================== -->
     <section class="panel" style="margin-bottom:1.25rem;">
       <h3><i data-lucide="layers"></i> Program Breakdown</h3>
       <div class="course-grid" id="courseGrid"></div>
     </section>
 
-    <div class="dashboard-grid">
+    <!-- ===================== TOP AT-RISK + RECENT ACTIVITY ===================== -->
+    <div class="dashboard-grid" id="adminBottomGrid">
       <section class="panel">
         <h3><i data-lucide="alert-triangle"></i> Top At-Risk Students</h3>
         <div class="table-responsive">
@@ -168,62 +175,5 @@
     ewAdminPaintChrome("dashboard");
     ewInitAdminDashboard();
   </script>
-      <script>
-      /* Skeleton phase — hide the real content for 220 ms while we
-         swap in a shimmering placeholder overlay. */
-      (function () {
-        const main = document.querySelector("main.main-content");
-        if (!main) return;
-
-        const overlay = document.createElement("div");
-        overlay.id = "adminSkeletonOverlay";
-        overlay.style.cssText = "position:absolute;inset:0;background:var(--bg-main,#0c0e12);z-index:20;padding:2rem;";
-        overlay.innerHTML = `
-          <div class="header" style="margin-bottom:1.5rem;">
-            <div class="skeleton" style="width:220px;height:26px;border-radius:6px;display:block;margin-bottom:10px;"></div>
-            <div class="skeleton" style="width:340px;height:12px;border-radius:4px;display:block;"></div>
-          </div>
-
-          <section class="metrics-grid">
-            ${Array.from({ length: 8 }).map(() => `
-              <div class="sk-metric-card">
-                <div class="skeleton sk-metric-value"></div>
-                <div class="skeleton sk-metric-label"></div>
-                <div class="skeleton sk-metric-sub"></div>
-              </div>`).join("")}
-          </section>
-
-          <div class="dashboard-grid">
-            ${Array.from({ length: 2 }).map(() => `
-              <div class="sk-panel">
-                <div class="skeleton sk-panel-title"></div>
-                ${Array.from({ length: 4 }).map((_, i) =>
-                  `<div class="skeleton sk-line" style="width:${100 - i * 8}%"></div>`
-                ).join("")}
-              </div>`).join("")}
-          </div>
-
-          <section class="panel" style="margin-top:1.25rem;">
-            <div class="skeleton sk-panel-title"></div>
-            <div class="course-grid">
-              ${Array.from({ length: 3 }).map(() => `
-                <div class="sk-panel" style="padding:1rem;">
-                  <div class="skeleton sk-line sk-w-60"></div>
-                  <div class="skeleton sk-line-sm sk-w-40"></div>
-                  <div class="skeleton sk-line sk-w-90"></div>
-                </div>`).join("")}
-            </div>
-          </section>`;
-
-        main.style.position = "relative";
-        main.appendChild(overlay);
-
-        setTimeout(() => {
-          overlay.style.transition = "opacity .25s ease";
-          overlay.style.opacity = "0";
-          setTimeout(() => overlay.remove(), 260);
-        }, 260);
-      })();
-    </script>
 </body>
 </html>

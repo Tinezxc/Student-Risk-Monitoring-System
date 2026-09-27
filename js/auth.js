@@ -494,3 +494,68 @@ function ewFormatSchoolIdInput(raw) {
 window.ewValidateSchoolId = ewValidateSchoolId;
 window.ewSuggestSchoolId  = ewSuggestSchoolId;
 window.ewFormatSchoolIdInput = ewFormatSchoolIdInput;
+
+/* ------------------------------------------------------------
+   Logout — asks for confirmation first, then clears session
+   and hard-blocks bfcache restore.
+   ------------------------------------------------------------ */
+async function ewLogout() {
+  const confirmed = await ewConfirm({
+    title: "Log out?",
+    body: `
+      <div style="display:flex;gap:.85rem;align-items:flex-start;">
+        <div style="width:38px;height:38px;flex-shrink:0;border-radius:10px;
+                    background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.3);
+                    display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff7e87" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:.9rem;color:#f0f2f7;font-weight:600;margin-bottom:.35rem;">
+            You're about to sign out of EarlyWatch
+          </div>
+          <div style="font-size:.82rem;color:#8b93a0;line-height:1.5;">
+            Any unsaved changes will be lost. You'll need to sign in again to continue.
+          </div>
+        </div>
+      </div>`,
+    confirmLabel: "Log out",
+    cancelLabel: "Stay signed in",
+    danger: true
+  });
+
+  if (!confirmed) return;
+
+  /* ---- 2) Set the "logging out" flag ---- */
+  try {
+    sessionStorage.setItem("earlywatch.loggedOutAt", String(Date.now()));
+  } catch (_) {}
+
+  /* ---- 3) Clear the session ---- */
+  try {
+    sessionStorage.removeItem(EW_SESSION_KEY);
+    sessionStorage.removeItem("earlywatch.pendingVerify");
+    sessionStorage.removeItem("earlywatch.resetSession");
+  } catch (_) {}
+
+  /* ---- 4) Mark the page as NOT cacheable ---- */
+  try {
+    window.__ewLoggingOut = true;
+    window.addEventListener("pagehide", function (e) {
+      try { e.preventDefault && e.preventDefault(); } catch (_) {}
+    });
+  } catch (_) {}
+
+  /* ---- 5) Blank the DOM before redirect ---- */
+  try {
+    document.documentElement.innerHTML = "";
+    document.body && (document.body.innerHTML = "");
+  } catch (_) {}
+
+  /* ---- 6) Replace history entry so Back can't return here ---- */
+  window.location.replace("index.html");
+}
