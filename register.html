@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+    <title>EarlyWatch Student Sign Up</title>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="left-panel">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
+        EarlyWatch
+      </div>
+
+      <div class="hero-content">
+        <h1>
+          Create your<br />
+          <span class="highlight">Student</span><br />
+          Account
+        </h1>
+        <p>
+          Set up credentials to view your academic status, alerts, and
+          recommended actions.
+        </p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="login-container">
+        <h2>Create student account</h2>
+        <p class="subtitle">Fill in the details below to get started</p>
+
+        <div id="registerError" class="login-error" hidden></div>
+        <div id="registerSuccess" class="login-success" hidden></div>
+
+        <form id="registerForm" novalidate>
+          <input type="hidden" id="name" name="name" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input
+                type="text"
+                id="firstName"
+                placeholder="Juan"
+                autocomplete="given-name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Dela Cruz"
+                autocomplete="family-name"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender / Sex</label>
+            <select id="gender" required>
+              <option value="" disabled selected>Select…</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-Binary">Non-Binary</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              placeholder="Street, Barangay, City, Province"
+              autocomplete="street-address"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="you@cmdi.edu.ph"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="studentId">
+              School ID
+              <span style="color: #6b7280; font-weight: 400"
+                >(links to your record)</span
+              >
+            </label>
+            <input
+              type="text"
+              id="studentId"
+              placeholder="01-COLL-24-2742"
+              maxlength="16"
+              autocapitalize="characters"
+              autocomplete="off"
+              spellcheck="false"
+              required
+            />
+            <small
+              id="studentIdHint"
+              style="
+                color: #6b7280;
+                font-size: 0.72rem;
+                margin-top: 4px;
+                display: block;
+              "
+            >
+              Format:
+              <code
+                style="
+                  background: #1b2130;
+                  padding: 1px 5px;
+                  border-radius: 3px;
+                "
+                >01-COLL-24-2742</code
+              >
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                placeholder="Password Include Symbol"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm">Confirm password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="confirm"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="registerBtn">
+            Create account
+          </button>
+        </form>
+
+        <p class="auth-switch">
+          Already have an account?<a href="index.html">Sign in</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/password-toggle.js"></script>
+    <script src="js/register.js"></script>
+  </body>
+</html>

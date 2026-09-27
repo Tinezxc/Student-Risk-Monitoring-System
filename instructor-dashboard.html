@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>EarlyWatch - Instructor Dashboard</title>
+  <link rel="stylesheet" href="assets/instructor.css">
+  <link rel="stylesheet" href="assets/modal.css">
+    <link rel="stylesheet" href="assets/skeleton.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon"><i data-lucide="layers"></i></div>
+      <div>
+        <div class="brand-name">EarlyWatch</div>
+        <div class="brand-sub">Instructor</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="instructor-dashboard.html" class="nav-item active">
+        <i data-lucide="layout-grid"></i><span>Dashboard</span>
+      </a>
+      <a href="instructor-student-records.html" class="nav-item">
+        <i data-lucide="users"></i><span>Student Records</span>
+      </a>
+      <a href="instructor-interventions.html" class="nav-item">
+        <i data-lucide="clipboard-list"></i><span>Interventions</span>
+      </a>
+      <a href="instructor-alerts.html" class="nav-item">
+        <i data-lucide="bell"></i><span>Alerts</span>
+        <span class="badge red" id="navAlertCount">7</span>
+      </a>
+    </nav>
+
+    <div class="user-profile">
+      <div class="avatar" data-user-initials>PJ</div>
+      <div class="user-info">
+        <div class="user-name" data-user-name>Prof. James Cruz</div>
+        <div class="user-role" data-user-role>Instructor</div>
+      </div>
+      <button type="button" class="logout-btn" onclick="ewLogout()" title="Logout">
+        <i data-lucide="log-out"></i>
+      </button>
+    </div>
+  </aside>
+
+    <main class="main-content">
+    <header class="header">
+      <h1>Instructor Dashboard</h1>
+      <p class="subtitle">Academic Year 2026–2027 · 1st Semester · Updated September 15, 2026</p>
+    </header>
+
+    <!-- ===================== METRIC CARDS ===================== -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value" data-metric="sections">0</div>
+        <div class="metric-label">My Sections</div>
+        <div class="metric-sub"><span data-metric="students">0</span> students total</div>
+      </div>
+      <div class="metric-card critical">
+        <div class="metric-value" data-metric="critical">0</div>
+        <div class="metric-label">Critical Risk</div>
+        <div class="metric-sub">In my classes</div>
+      </div>
+      <div class="metric-card high">
+        <div class="metric-value" data-metric="high">0</div>
+        <div class="metric-label">High Risk</div>
+        <div class="metric-sub">Intervention underway</div>
+      </div>
+      <div class="metric-card open-cases">
+        <div class="metric-value" data-metric="medium">0</div>
+        <div class="metric-label">Medium Risk</div>
+        <div class="metric-sub">Monitoring closely</div>
+      </div>
+    </section>
+
+    <!-- ===================== ALERT BANNER ===================== -->
+    <div class="alert-banner">
+      <i data-lucide="triangle-alert"></i>
+      <span><strong id="unreadAlertCount">0</strong> unacknowledged alerts in your sections.</span>
+    </div>
+
+    <!-- ===================== TABLE + RISK DISTRIBUTION ===================== -->
+    <div class="dashboard-grid">
+      <section class="table-card">
+        <div class="table-header">
+          <h3>At-Risk Students in My Classes</h3>
+          <span class="sort-text">Sorted by risk score</span>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Course / Section</th>
+                <th>Risk</th>
+                <th>GPA</th>
+                <th>Attend.</th>
+                <th>Missed</th>
+                <th>Case</th>
+                <th>Adviser</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="priorityTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="widget-column">
+        <!-- ===================== RISK DISTRIBUTION ===================== -->
+        <div class="widget-card">
+          <h3>Risk Distribution</h3>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Critical</span>
+                <span data-count="critical">0</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill critical" data-bar="critical" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>High</span>
+                <span data-count="high">0</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill high" data-bar="high" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Medium</span>
+                <span data-count="medium">0</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill medium" data-bar="medium" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Low</span>
+                <span data-count="low">0</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill low" data-bar="low" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================== CASE STATUS (extra widget) ===================== -->
+        <div class="widget-card">
+          <h3>Case Status</h3>
+          <ul class="section-list">
+            <li>
+              <div>
+                <div class="section-name">Open</div>
+                <div class="section-sub">Immediate action</div>
+              </div>
+              <div class="section-stat">
+                <span class="section-count" data-case="open">0</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="section-name">In Progress</div>
+                <div class="section-sub">Intervention underway</div>
+              </div>
+              <div class="section-stat">
+                <span class="section-count" data-case="inprogress">0</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="section-name">Monitoring</div>
+                <div class="section-sub">Regular check-ins</div>
+              </div>
+              <div class="section-stat">
+                <span class="section-count" data-case="monitoring">0</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="section-name">Resolved</div>
+                <div class="section-sub">Closed successfully</div>
+              </div>
+              <div class="section-stat">
+                <span class="section-count" data-case="resolved">0</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/db.js"></script>
+  <script src="js/risk.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    ewGuard("instructor");
+    ewInitDashboardPage();
+
+    /* Sync the alert banner */
+    (function () {
+      const n = EW_DB.alerts.unread().length;
+      const badge = document.getElementById("navAlertCount");
+      if (badge) badge.textContent = n;
+      const span = document.getElementById("unreadAlertCount");
+      if (span) span.textContent = n;
+    })();
+  </script>
+</body>
+</html>

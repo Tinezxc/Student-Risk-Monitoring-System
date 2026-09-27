@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>EarlyWatch - Admin · Student Detail</title>
+  <link rel="stylesheet" href="assets/admin.css">
+  <link rel="stylesheet" href="assets/modal.css">
+  <link rel="stylesheet" href="assets/skeleton.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon"><i data-lucide="layers"></i></div>
+      <div>
+        <div class="brand-name">EarlyWatch</div>
+        <div class="brand-sub">Admin</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" id="adminNav"></nav>
+
+    <div class="user-profile">
+      <div class="avatar" data-user-initials>SA</div>
+      <div class="user-info">
+        <div class="user-name" data-user-name>System Administrator</div>
+        <div class="user-role" data-user-role>Administrator</div>
+      </div>
+      <button type="button" class="logout-btn" onclick="ewLogout()" title="Logout">
+        <i data-lucide="log-out"></i>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content" id="adminStudentRoot">
+    <div class="text-muted" style="padding:2rem;">Loading student…</div>
+  </main>
+
+   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/skeleton.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/risk.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    ewGuard("admin");
+    ewAdminPaintChrome("records");
+    ewInitAdminStudent();
+  </script>
+      <script>
+      /* Skeleton overlay for the student detail page */
+      (function () {
+        const main = document.getElementById("studentDetailRoot");
+        if (!main) return;
+
+        main.innerHTML = `
+          <a class="btn-back" href="admin-records.html" style="margin-bottom:1rem;display:inline-block;">
+            <span class="skeleton" style="width:130px;height:18px;border-radius:5px;display:inline-block;vertical-align:middle;"></span>
+          </a>
+
+          <div class="sk-detail-header">
+            <div class="left">
+              <div class="skeleton avatar"></div>
+              <div class="lines">
+                <div class="skeleton l1"></div>
+                <div class="skeleton l2"></div>
+                <div class="skeleton l3"></div>
+              </div>
+            </div>
+            <div class="stats">
+              <div class="stat"><div class="skeleton v"></div><div class="skeleton l"></div></div>
+              <div class="stat"><div class="skeleton v"></div><div class="skeleton l"></div></div>
+              <div class="stat"><div class="skeleton v"></div><div class="skeleton l"></div></div>
+            </div>
+          </div>
+
+          <div class="sk-tabs">
+            <div class="skeleton tab"></div>
+            <div class="skeleton tab"></div>
+            <div class="skeleton tab"></div>
+            <div class="skeleton tab"></div>
+          </div>
+
+          <div class="detail-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="sk-panel">
+              <div class="skeleton sk-panel-title"></div>
+              ${Array.from({ length: 5 }).map(() =>
+                `<div class="skeleton sk-line" style="width:90%"></div>`
+              ).join("")}
+            </div>
+            <div class="sk-panel">
+              <div class="skeleton sk-panel-title"></div>
+              ${Array.from({ length: 5 }).map(() =>
+                `<div class="skeleton sk-line" style="width:80%"></div>`
+              ).join("")}
+            </div>
+          </div>
+
+          <div class="sk-panel">
+            <div class="skeleton sk-panel-title"></div>
+            ${Array.from({ length: 3 }).map(() =>
+              `<div class="skeleton sk-line" style="width:100%;height:18px;"></div>`
+            ).join("")}
+          </div>`;
+      })();
+    </script>
+</body>
+</html>
