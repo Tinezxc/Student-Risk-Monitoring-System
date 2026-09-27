@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+    <title>EarlyWatch — Student Risk Early Intervention System</title>
+    <meta name="description" content="Monitor academic risk signals early and act before students fall behind. EarlyWatch is a student risk early intervention system for instructors, and administrators." />
+    <link rel="stylesheet" href="assets/home.css" />
+    <link rel="stylesheet" href="assets/skeleton.css" />
+  </head>
+  <body>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <header class="navbar">
+      <a class="brand" href="home.html">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-text">EarlyWatch</div>
+          <div class="brand-sub">Risk Monitoring System</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#roles">Roles</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="index.html">Sign in</a>
+        <a class="btn btn-primary" href="register.html">Create account</a>
+      </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow">
+            <i data-lucide="sparkles"></i>
+            <span>Academic Year 2026–2027 · Now Live</span>
+          </div>
+
+          <h1>
+            Spot at-risk students<br />
+            <span class="gradient">before they fall behind.</span>
+          </h1>
+
+          <p class="lead">
+            EarlyWatch continuously monitors attendance, grades, and missed
+            activities to surface academic risk early — so
+            instructors can act when it still matters.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="index.html">
+              <i data-lucide="log-in"></i>
+              Sign in
+            </a>
+            <a class="btn btn-ghost btn-lg" href="register.html">
+              <i data-lucide="user-plus"></i>
+              Create a student account
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span><i data-lucide="shield-check"></i> Role-based access</span>
+            <span><i data-lucide="activity"></i> Real-time risk scoring</span>
+            <span><i data-lucide="bell"></i> Automated alerts</span>
+          </div>
+        </div>
+
+        <!-- Mock dashboard preview -->
+        <div class="hero-preview" aria-hidden="true">
+          <div class="preview-header">
+            <span class="preview-dot red"></span>
+            <span class="preview-dot yellow"></span>
+            <span class="preview-dot green"></span>
+            <span class="preview-title">Risk Dashboard — 1st Semester</span>
+          </div>
+
+          <div class="preview-grid">
+            <div class="preview-stat critical">
+              <div class="val">2</div>
+              <div class="lbl">Critical</div>
+            </div>
+            <div class="preview-stat high">
+              <div class="val">3</div>
+              <div class="lbl">High</div>
+            </div>
+            <div class="preview-stat low">
+              <div class="val">3</div>
+              <div class="lbl">Stable</div>
+            </div>
+          </div>
+
+          <div class="preview-bar"><div class="fill-critical" style="width:25%"></div></div>
+          <div class="preview-bar"><div class="fill-high" style="width:38%"></div></div>
+          <div class="preview-bar"><div class="fill-low" style="width:37%"></div></div>
+
+          <div class="preview-rows">
+            <div class="preview-row">
+              <div class="preview-avatar critical">AR</div>
+              <div>
+                <div class="preview-name">Alex Reyes</div>
+                <div class="preview-sub">BSIT 3-A · GPA 1.55</div>
+              </div>
+              <span class="preview-tag critical">Critical</span>
+            </div>
+            <div class="preview-row">
+              <div class="preview-avatar high">SM</div>
+              <div>
+                <div class="preview-name">Sofia Mendoza</div>
+                <div class="preview-sub">BSCS 3-B · Attendance 55%</div>
+              </div>
+              <span class="preview-tag high">High</span>
+            </div>
+            <div class="preview-row">
+              <div class="preview-avatar low">RV</div>
+              <div>
+                <div class="preview-name">Renz Villanueva</div>
+                <div class="preview-sub">BSIT 3-A · Case resolved</div>
+              </div>
+              <span class="preview-tag low">Stable</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+    <section class="section" id="features">
+      <div class="section-head">
+        <div class="section-eyebrow">Features</div>
+        <h2>Everything you need to catch risk early</h2>
+        <p>
+          A single system that turns raw academic data into clear, actionable
+          signals for advisers, instructors, and administrators.
+        </p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">
+            <i data-lucide="activity"></i>
+          </div>
+          <h3>Continuous risk scoring</h3>
+          <p>
+            Attendance, GPA, failed subjects, and missed activities are
+            combined into a single 0–100 risk score with transparent
+            breakdowns.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon red">
+            <i data-lucide="bell"></i>
+          </div>
+          <h3>Automated alerts</h3>
+          <p>
+            The moment a threshold is crossed, the system generates a
+            severity-tagged alert so nobody slips through the cracks.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon green">
+            <i data-lucide="clipboard-list"></i>
+          </div>
+          <h3>Intervention tracking</h3>
+          <p>
+            Log counseling, tutoring, parent conferences, and coaching —
+            then track outcomes to see what actually helps each student.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon amber">
+            <i data-lucide="bar-chart-3"></i>
+          </div>
+          <h3>Institution-wide analytics</h3>
+          <p>
+            Administrators get aggregate views by program, section, and
+            risk level to guide resourcing and policy decisions.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i data-lucide="users"></i>
+          </div>
+          <h3>Role-based dashboards</h3>
+          <p>
+            Advisers, instructors, students, and administrators each get a
+            tailored view — no clutter, no irrelevant data.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon green">
+            <i data-lucide="shield-check"></i>
+          </div>
+          <h3>Private by design</h3>
+          <p>
+            Students see their own status. Advisers see their advisees.
+            Admins see aggregates. Access always matches responsibility.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ROLES ===================== -->
+    <section class="section" id="roles" style="padding-top:0;">
+      <div class="section-head">
+        <div class="section-eyebrow">Built for every role</div>
+        <h2>One system, four tailored experiences</h2>
+        <p>
+          Everyone sees the right slice of the data — nothing more,
+          nothing less.
+        </p>
+      </div>
+
+      <div class="roles">
+        <div class="role-card">
+          <span class="role-badge admin">Administrator</span>
+          <h3>Institution overview</h3>
+          <p>Monitor risk across every program and section.</p>
+          <ul>
+            <li><i data-lucide="check"></i> Full student records &amp; statistics</li>
+            <li><i data-lucide="check"></i> Program &amp; section breakdowns</li>
+            <li><i data-lucide="check"></i> All alerts &amp; interventions</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <span class="role-badge instructor">Instructor</span>
+          <h3>Class-level signals</h3>
+          <p>See the students in your sections who need help.</p>
+          <ul>
+            <li><i data-lucide="check"></i> At-risk students in your classes</li>
+            <li><i data-lucide="check"></i> Section risk distribution</li>
+            <li><i data-lucide="check"></i> Alert feed for your sections</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <span class="role-badge student">Student</span>
+          <h3>Personal status</h3>
+          <p>Understand where you stand and what to do next.</p>
+          <ul>
+            <li><i data-lucide="check"></i> Current risk level &amp; score</li>
+            <li><i data-lucide="check"></i> Subject-by-subject breakdown</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATS STRIP ===================== -->
+    <section class="section" id="about" style="padding-top:0;">
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="n">4</div>
+          <div class="l">Role dashboards</div>
+        </div>
+        <div class="stat-item">
+          <div class="n">100</div>
+          <div class="l">Risk score scale</div>
+        </div>
+        <div class="stat-item">
+          <div class="n">4</div>
+          <div class="l">Risk levels tracked</div>
+        </div>
+        <div class="stat-item">
+          <div class="n">24/7</div>
+          <div class="l">Always monitoring</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="cta">
+      <div class="cta-inner">
+        <h2>Ready to see the system?</h2>
+        <p>
+          Use one of the demo accounts on the sign-in page to explore
+          EarlyWatch as an administrator, instructor, or student.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="index.html">
+            <i data-lucide="log-in"></i>
+            Sign in
+          </a>
+          <a class="btn btn-ghost btn-lg" href="register.html">
+            <i data-lucide="user-plus"></i>
+            Register as student
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+      <div>© 2026 EarlyWatch · Student Risk Early Intervention System</div>
+      <div>
+        <a href="index.html">Sign in</a>
+        <a href="register.html">Register</a>
+        <a href="#features">Features</a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/skeleton.js"></script>
+    <script>
+      if (window.lucide) lucide.createIcons();
+
+      /* Smooth-scroll for in-page anchors */
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          const id = a.getAttribute("href").slice(1);
+          const target = document.getElementById(id);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    </script>
+  </body>
+</html>

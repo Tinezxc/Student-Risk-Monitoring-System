@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+    <title>EarlyWatch — Verify your account</title>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="left-panel">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5"
+              stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" fill="none" />
+          </svg>
+        </div>
+        EarlyWatch
+      </div>
+
+      <div class="hero-content">
+        <h1>
+          Verify<br />
+          <span class="highlight">your account</span><br />
+          to continue
+        </h1>
+        <p>We sent a 5-digit verification code to your email. Enter it to activate your EarlyWatch account.</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="login-container">
+        <h2>Verify your account</h2>
+        <p class="subtitle" id="verifySubtitle">Enter the 5-digit code sent to your email</p>
+
+        <div id="verifyError" class="login-error" hidden></div>
+        <div id="verifySuccess" class="login-success" hidden></div>
+
+        <form id="verifyForm" novalidate autocomplete="off">
+          <div class="otp-row" id="otpRow">
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1" />
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2" />
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3" />
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4" />
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5" />
+          </div>
+
+          <button type="submit" class="btn-submit" id="verifyBtn" style="margin-top:1.25rem;">Verify</button>
+        </form>
+
+        <p class="login-hint">
+          Didn't receive the code?
+          <a href="#" id="resendLink" style="color:#5570f6;text-decoration:none;font-weight:600;margin-left:4px;">Resend</a>
+        </p>
+
+        <p class="auth-switch">
+          Wrong email?<a href="register.html">Go back</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/verify.js"></script>
+  </body>
+</html>

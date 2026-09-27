@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>EarlyWatch - Admin Dashboard</title>
+  <link rel="stylesheet" href="assets/admin.css">
+  <link rel="stylesheet" href="assets/modal.css">
+  <link rel="stylesheet" href="assets/skeleton.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon"><i data-lucide="layers"></i></div>
+      <div>
+        <div class="brand-name">EarlyWatch</div>
+        <div class="brand-sub">Admin</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" id="adminNav"></nav>
+
+    <div class="user-profile">
+      <div class="avatar" data-user-initials>SA</div>
+      <div class="user-info">
+        <div class="user-name" data-user-name>System Administrator</div>
+        <div class="user-role" data-user-role>Administrator</div>
+      </div>
+      <button type="button" class="logout-btn" onclick="ewLogout()" title="Logout">
+        <i data-lucide="log-out"></i>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="header">
+      <h1>Admin Dashboard</h1>
+      <p class="subtitle">Institution-wide student risk overview · Academic Year 2026–2027</p>
+    </header>
+
+    <section class="metrics-grid">
+      <div class="metric-card primary">
+        <div class="metric-value" data-admin="students">0</div>
+        <div class="metric-label">Total Students</div>
+        <div class="metric-sub">Across all programs</div>
+      </div>
+      <div class="metric-card critical">
+        <div class="metric-value" data-admin="critical">0</div>
+        <div class="metric-label">Critical Risk</div>
+        <div class="metric-sub">Immediate action</div>
+      </div>
+      <div class="metric-card high">
+        <div class="metric-value" data-admin="high">0</div>
+        <div class="metric-label">High Risk</div>
+        <div class="metric-sub">Intervention underway</div>
+      </div>
+      <div class="metric-card primary">
+        <div class="metric-value" data-admin="open">0</div>
+        <div class="metric-label">Open Cases</div>
+        <div class="metric-sub">Awaiting resolution</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-admin="alerts">0</div>
+        <div class="metric-label">Unread Alerts</div>
+        <div class="metric-sub">System-wide</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-admin="interventions">0</div>
+        <div class="metric-label">Interventions</div>
+        <div class="metric-sub">Logged total</div>
+      </div>
+      <div class="metric-card low">
+        <div class="metric-value" data-admin="avgGpa">0.00</div>
+        <div class="metric-label">Average GPA</div>
+        <div class="metric-sub">Institution-wide</div>
+      </div>
+      <div class="metric-card low">
+        <div class="metric-value" data-admin="avgAttendance">0%</div>
+        <div class="metric-label">Average Attendance</div>
+        <div class="metric-sub">Institution-wide</div>
+      </div>
+    </section>
+
+    <div class="dashboard-grid">
+      <section class="panel">
+        <h3><i data-lucide="bar-chart-3"></i> Risk Distribution</h3>
+        <div class="progress-list">
+          <div>
+            <div class="progress-label"><span>Critical</span><span data-dist="critical">0</span></div>
+            <div class="progress-bar"><div class="fill critical" data-bar="critical" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="progress-label"><span>High</span><span data-dist="high">0</span></div>
+            <div class="progress-bar"><div class="fill high" data-bar="high" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="progress-label"><span>Medium</span><span data-dist="medium">0</span></div>
+            <div class="progress-bar"><div class="fill medium" data-bar="medium" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="progress-label"><span>Low</span><span data-dist="low">0</span></div>
+            <div class="progress-bar"><div class="fill low" data-bar="low" style="width:0%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3><i data-lucide="folder-kanban"></i> Case Status</h3>
+        <div class="progress-list">
+          <div class="progress-label"><span>Open</span><span data-case="open">0</span></div>
+          <div class="progress-label"><span>In Progress</span><span data-case="inprogress">0</span></div>
+          <div class="progress-label"><span>Monitoring</span><span data-case="monitoring">0</span></div>
+          <div class="progress-label"><span>Resolved</span><span data-case="resolved">0</span></div>
+        </div>
+        <h3 style="margin-top:1.5rem;"><i data-lucide="clipboard-list"></i> Interventions</h3>
+        <div class="progress-list">
+          <div class="progress-label"><span>Pending</span><span data-iv="pending">0</span></div>
+          <div class="progress-label"><span>Effective</span><span data-iv="effective">0</span></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-bottom:1.25rem;">
+      <h3><i data-lucide="layers"></i> Program Breakdown</h3>
+      <div class="course-grid" id="courseGrid"></div>
+    </section>
+
+    <div class="dashboard-grid">
+      <section class="panel">
+        <h3><i data-lucide="alert-triangle"></i> Top At-Risk Students</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Course · Section</th>
+                <th>Risk</th>
+                <th>GPA</th>
+                <th>Attend.</th>
+                <th>Case</th>
+              </tr>
+            </thead>
+            <tbody id="topRiskTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3><i data-lucide="activity"></i> Recent Activity</h3>
+        <div class="activity-list" id="activityFeed"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/skeleton.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/risk.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    ewGuard("admin");
+    ewAdminPaintChrome("dashboard");
+    ewInitAdminDashboard();
+  </script>
+      <script>
+      /* Skeleton phase — hide the real content for 220 ms while we
+         swap in a shimmering placeholder overlay. */
+      (function () {
+        const main = document.querySelector("main.main-content");
+        if (!main) return;
+
+        const overlay = document.createElement("div");
+        overlay.id = "adminSkeletonOverlay";
+        overlay.style.cssText = "position:absolute;inset:0;background:var(--bg-main,#0c0e12);z-index:20;padding:2rem;";
+        overlay.innerHTML = `
+          <div class="header" style="margin-bottom:1.5rem;">
+            <div class="skeleton" style="width:220px;height:26px;border-radius:6px;display:block;margin-bottom:10px;"></div>
+            <div class="skeleton" style="width:340px;height:12px;border-radius:4px;display:block;"></div>
+          </div>
+
+          <section class="metrics-grid">
+            ${Array.from({ length: 8 }).map(() => `
+              <div class="sk-metric-card">
+                <div class="skeleton sk-metric-value"></div>
+                <div class="skeleton sk-metric-label"></div>
+                <div class="skeleton sk-metric-sub"></div>
+              </div>`).join("")}
+          </section>
+
+          <div class="dashboard-grid">
+            ${Array.from({ length: 2 }).map(() => `
+              <div class="sk-panel">
+                <div class="skeleton sk-panel-title"></div>
+                ${Array.from({ length: 4 }).map((_, i) =>
+                  `<div class="skeleton sk-line" style="width:${100 - i * 8}%"></div>`
+                ).join("")}
+              </div>`).join("")}
+          </div>
+
+          <section class="panel" style="margin-top:1.25rem;">
+            <div class="skeleton sk-panel-title"></div>
+            <div class="course-grid">
+              ${Array.from({ length: 3 }).map(() => `
+                <div class="sk-panel" style="padding:1rem;">
+                  <div class="skeleton sk-line sk-w-60"></div>
+                  <div class="skeleton sk-line-sm sk-w-40"></div>
+                  <div class="skeleton sk-line sk-w-90"></div>
+                </div>`).join("")}
+            </div>
+          </section>`;
+
+        main.style.position = "relative";
+        main.appendChild(overlay);
+
+        setTimeout(() => {
+          overlay.style.transition = "opacity .25s ease";
+          overlay.style.opacity = "0";
+          setTimeout(() => overlay.remove(), 260);
+        }, 260);
+      })();
+    </script>
+</body>
+</html>
